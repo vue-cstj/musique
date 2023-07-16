@@ -1,14 +1,14 @@
 <template>
     <main>
-        <h1>Le titre de ma page</h1>
-        <LecteurComponent />
+        <h1>La page d'accueil</h1>
+        <div id="accueil">
+            <router-link :to="{ name: 'musique' }">Ouvrir le lecteur</router-link>
+        </div>
     </main>
 </template>
 
 <script setup>
-import LecteurComponent from '@/components/Lecteur.vue';
+import { RouterLink } from 'vue-router';
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
