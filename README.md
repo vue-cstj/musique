@@ -25,7 +25,12 @@
 6.  Dans le terminal, lancer la commande `npm run dev` et ouvrir le navigateur à l'adresse `http://localhost:5173/`. Le lecteur devrait s'afficher.
 
 ## Mettre à sa main
-1. Créer les routes pour les pages `accueil` et `lecteur`.
+1. Créer les routes pour les pages `accueil` et `musique`.
+   1. Dupliquer le fichier `views/Index.vue` et le renommer `views/Musique.vue`.
+   2. Dans le fichier `router/index.js`, analyser le contenu existant et ajouter la routes pour la page `musique`.
+   3. Adapter `Index.vue`, `Lecteur.vue` et `Musique.vue` pour que chacun ait son propre contenu.
+   4. Dans `Index.vue`, ajouter un lien vers la page `musique` à l'aide de la balise `<router-link>`.
 2. Utiliser des variables css pour les couleurs.
 3. Créer des sous-components.
 4. Utiliser un prop afin de rendre le component plus générique.
+5. Adapter la mise en page.

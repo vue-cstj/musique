@@ -1,8 +1,4 @@
 <template>
-	<audio :src="(source_audio ?? 'chansons/empty.mp3')" autoplay ref="balise_audio" @timeupdate="timeUpdate()" @ended="arreterLecture"></audio>
-	<div id="accueil">
-		<a class="btn-lecteur" href="#" @click.prevent="changerPage('lecteur')">Ouvrir le lecteur</a>
-	</div>
 	<div id="lecteur">
 		<div class="entete">
 			<a class="btn-accueil" href="#" @click.prevent="changerPage('accueil')">Retour</a>
@@ -22,6 +18,7 @@
 			</li>
 		</ul>
 		<div v-if="selection_active == true" class="informations">
+			<audio :src="(source_audio ?? 'chansons/empty.mp3')" autoplay ref="balise_audio" @timeupdate="timeUpdate()" @ended="arreterLecture"></audio>
 			<img :src="'chansons/' + selection.image" alt="">
 			<div class="controles">
 				<div class="progression">
