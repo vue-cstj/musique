@@ -146,15 +146,19 @@ function setVolume() {
 /***************
 ** COULEURS
 ***************/
-
-$noir: #111;
-$blanc: #f8f8f8;
-$gris: #888;
-$gris-pale: lighten($gris, 35%);
-$gris-fonce: darken($gris, 30%);
-$vert: darkslategray;
-$vert-pale: lighten($vert, 15%);
-
+#lecteur {
+	// --hue: 0;
+	--sat: 50%;
+	--noir: hsl(var(--hue), var(--sat), 7%);
+	--blanc: hsl(var(--hue), var(--sat), 97%);
+	--gris: hsl(var(--hue), var(--sat), 53%);
+	--gris-pale: hsl(var(--hue), var(--sat), 88%);
+	--gris-fonce: hsl(var(--hue), var(--sat), 23%);
+	--hue-highlight: 180;
+	--sat-highlight: 25%;
+	--vert: hsl(var(--hue-highlight), var(--sat-highlight), 25%);
+	--vert-pale: hsl(var(--hue-highlight), var(--sat-highlight), 40%);
+}
 
 /***************
 ** LECTEUR
@@ -163,7 +167,7 @@ $vert-pale: lighten($vert, 15%);
 #lecteur {
 	width: 1200px;
 	height: 850px;
-	background-color: $gris-fonce;
+	background-color: var(--gris-fonce);
 	border-radius: 10px;
 
 	.entete {
@@ -172,10 +176,10 @@ $vert-pale: lighten($vert, 15%);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		// border-bottom: 2px solid $noir;
+		// border-bottom: 2px solid var(--noir);
 
 		.barre-recherche {
-			background-color: $gris-pale;
+			background-color: var(--gris-pale);
 			font-size: 1.5rem;
 			padding: 0.2em 0.4em;
 			border-radius: 6px;
@@ -186,14 +190,14 @@ $vert-pale: lighten($vert, 15%);
 		height: 550px;
 		font-size: 1.5rem;
 		overflow-y: auto;
-		border-top: 2px solid $gris-pale;
-		border-bottom: 2px solid $gris-pale;
+		border-top: 2px solid var(--gris-pale);
+		border-bottom: 2px solid var(--gris-pale);
 
 		.chanson {
 			font-size: 1.25rem;
 			display: flex;
 			padding: 1em;
-			border-bottom: 1px solid $gris;
+			border-bottom: 1px solid var(--gris);
 			cursor: pointer;
 			transition: 0.3s ease-in-out;
 
@@ -202,7 +206,7 @@ $vert-pale: lighten($vert, 15%);
 			}
 
 			&:hover {
-				background-color: $vert;
+				background-color: var(--vert);
 				font-size: 1.5rem;
 			}
 
@@ -221,7 +225,7 @@ $vert-pale: lighten($vert, 15%);
 		}
 
 		.chanson-active {
-			background-color: $vert-pale;
+			background-color: var(--vert-pale);
 			font-size: 1.5rem;
 		}
 	}
@@ -248,13 +252,13 @@ $vert-pale: lighten($vert, 15%);
 				.barre-progression {
 					width: 100%;
 					height: 7px;
-					background-color: $gris-pale;
+					background-color: var(--gris-pale);
 					margin: 0 1rem;
 				}
 
 				.barre-progression-remplie {
 					height: 100%;
-					background-color: $vert-pale;
+					background-color: var(--vert-pale);
 					width: 0;
 				}
 
@@ -265,7 +269,7 @@ $vert-pale: lighten($vert, 15%);
 			}
 
 			.material-symbols-outlined {
-				color: lighten(firebrick, 10%);
+				color: hsl(0, 68%, 52%);
 				font-size: 80px;
 				display: flex;
 				justify-content: center;
@@ -283,7 +287,7 @@ $vert-pale: lighten($vert, 15%);
 			input[type="range"] {
 				width: 100%;
 				height: 10px;
-				background-color: $gris-pale;
+				background-color: var(--gris-pale);
 				border-radius: 5px;
 				appearance: none;
 				margin: 0 1rem;
@@ -292,7 +296,7 @@ $vert-pale: lighten($vert, 15%);
 					appearance: none;
 					width: 20px;
 					height: 20px;
-					background-color: $vert-pale;
+					background-color: var(--vert-pale);
 					border-radius: 50%;
 					cursor: pointer;
 				}
@@ -300,7 +304,7 @@ $vert-pale: lighten($vert, 15%);
 				&::-moz-range-thumb {
 					width: 20px;
 					height: 20px;
-					background-color: $vert-pale;
+					background-color: var(--vert-pale);
 					border-radius: 50%;
 					cursor: pointer;
 				}
