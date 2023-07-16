@@ -1,0 +1,216 @@
+@charset "UTF-8";
+/***************
+** COULEURS
+***************/
+/***************
+** GÉNÉRAL
+***************/
+html {
+  box-sizing: border-box;
+  color: #f8f8f8;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+a {
+  background-color: #e1e1e1;
+  color: #111;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.25em 0.75em;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+a:hover {
+  background-color: #888;
+}
+
+::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #e1e1e1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+#app[v-cloak] {
+  opacity: 0;
+}
+
+/***************
+** ACCUEIL
+***************/
+#accueil {
+  width: 1200px;
+  height: 850px;
+  background-color: #3c3c3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+/***************
+** LECTEUR
+***************/
+#lecteur {
+  width: 1200px;
+  height: 850px;
+  background-color: #3c3c3c;
+  border-radius: 10px;
+}
+#lecteur .entete {
+  height: 125px;
+  padding: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#lecteur .entete .barre-recherche {
+  background-color: #e1e1e1;
+  font-size: 1.5rem;
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+}
+#lecteur .liste-chansons {
+  height: 550px;
+  font-size: 1.5rem;
+  overflow-y: auto;
+  border-top: 2px solid #e1e1e1;
+  border-bottom: 2px solid #e1e1e1;
+}
+#lecteur .liste-chansons .chanson {
+  font-size: 1.25rem;
+  display: flex;
+  padding: 1em;
+  border-bottom: 1px solid #888;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+#lecteur .liste-chansons .chanson:last-child {
+  border-bottom: none;
+}
+#lecteur .liste-chansons .chanson:hover {
+  background-color: darkslategray;
+  font-size: 1.5rem;
+}
+#lecteur .liste-chansons .chanson .titre {
+  width: 55%;
+}
+#lecteur .liste-chansons .chanson .artiste {
+  width: 40%;
+}
+#lecteur .liste-chansons .chanson .temps {
+  width: 5%;
+}
+#lecteur .liste-chansons .chanson-active {
+  background-color: #4c7f7f;
+  font-size: 1.5rem;
+}
+#lecteur .informations {
+  height: 175px;
+  display: flex;
+  padding: 1.25em;
+  display: flex;
+  justify-content: space-between;
+}
+#lecteur .informations .controles {
+  width: 800px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#lecteur .informations .controles .progression {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+#lecteur .informations .controles .progression .barre-progression {
+  width: 100%;
+  height: 7px;
+  background-color: #e1e1e1;
+  margin: 0 1rem;
+}
+#lecteur .informations .controles .progression .barre-progression-remplie {
+  height: 100%;
+  background-color: #4c7f7f;
+  width: 0;
+}
+#lecteur .informations .controles .progression .temps-actuel,
+#lecteur .informations .controles .progression .temps-total {
+  width: 35px;
+}
+#lecteur .informations .controles .material-symbols-outlined {
+  color: #d73030;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+#lecteur .informations .barre-volume {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#lecteur .informations .barre-volume input[type=range] {
+  width: 100%;
+  height: 10px;
+  background-color: #e1e1e1;
+  border-radius: 5px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin: 0 1rem;
+}
+#lecteur .informations .barre-volume input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #4c7f7f;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#lecteur .informations .barre-volume input[type=range]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #4c7f7f;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#lecteur .informations .barre-volume .pourcentage-volume {
+  margin-top: 0.5rem;
+}/*# sourceMappingURL=style.css.map */

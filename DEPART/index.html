@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecteur de musique - Synthèse</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+
+<body>
+
+    <div id="app" v-cloak>
+
+        <audio :src="(source_audio ?? 'chansons/empty.mp3')" autoplay ref="balise_audio" @timeupdate="timeUpdate()"
+            @ended="arreterLecture"></audio>
+
+        <div id="accueil" v-if="page_active === 'accueil'">
+            <a class="btn-lecteur" href="#" @click.prevent="changerPage('lecteur')">Ouvrir le lecteur</a>
+        </div>
+
+        <div id="lecteur" v-if="page_active === 'lecteur'">
+            <div class="entete">
+                <a class="btn-accueil" href="#" @click.prevent="changerPage('accueil')">Retour</a>
+                <input class="barre-recherche" type="text" v-model="texte_recherche" placeholder="Recherche...">
+            </div>
+            <ul class="liste-chansons">
+                <li class="chanson" :class="{ 'chanson-active': chanson === selection }"
+                    v-for="chanson of filtrer(chansons)" @click="selectionnerChanson(chanson)">
+                    <div class="titre">
+                        <p> {{ chanson.titre }}</p>
+                    </div>
+                    <div class="artiste">
+                        <p>{{ chanson.artiste }}</p>
+                    </div>
+                    <div class="temps">
+                        <p>{{ formaterTemps(chanson.temps) }}</p>
+                    </div>
+                </li>
+            </ul>
+            <div v-if="selection_active == true" class="informations">
+                <img :src="'chansons/' + selection.image" alt="">
+                <div class="controles">
+                    <div class="progression">
+                        <p class="temps-actuel">
+                            {{ temps_actuel && !isNaN(temps_actuel) ? formaterTemps(temps_actuel.toFixed(0)) : '--:--'
+                            }}
+                        </p>
+                        <div class="barre-progression">
+                            <div class="barre-progression-remplie" :style="{ width: progression + '%' }"></div>
+                        </div>
+                        <p class="temps-total">
+                            {{ temps_total && !isNaN(temps_total) ? formaterTemps(temps_total.toFixed(0)) : '--:--' }}
+                        </p>
+                    </div>
+                    <span class="material-symbols-outlined" @click="toggleJouer()">
+                        {{ balise_audio && !balise_audio.paused ? 'pause_circle' : 'play_circle' }}
+                    </span>
+                </div>
+                <div class="barre-volume">
+                    <input type="range" min="0" max="100" v-model="volume" @input="setVolume">
+                    <p class="pourcentage-volume">
+                        {{ 'volume: (' + (balise_audio.volume * 100).toFixed(0) + '%)' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>
