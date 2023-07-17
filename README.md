@@ -4,7 +4,7 @@
 | Avant (composition)                         | Après (component)                                                                        |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | Ne peut être réutilisé dans d'autres pages. | Peut être réutilisé dans d'autres pages seulement en incluant le component où l'on veut. |
-| Est plus simple pour un projet simple       | Peut-être _facilement_ augmenté au fur et à mesure que le projet grossit|
+| Est plus simple pour un projet simple       | Peut-être _facilement_ augmenté au fur et à mesure que le projet grossit                 |
 
 
 1. Placer le dossier `DEPART/chansons` dans le dossier `public`
@@ -32,5 +32,9 @@
    4. Dans `Index.vue`, ajouter un lien vers la page `musique` à l'aide de la balise `<router-link>`.
 2. Utiliser des variables css pour les couleurs.
 3. Créer des sous-components.
+   1. [`ListeChansons.vue`](./ListeChansons.md)
+   2. Informations.vue
+   3. Filtre.vue
+   4. ...
 4. Utiliser un prop afin de rendre le component plus générique.
 5. Adapter la mise en page.
