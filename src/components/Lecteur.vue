@@ -4,21 +4,9 @@
 			<a class="btn-accueil" href="#" @click.prevent="changerPage('accueil')">Retour</a>
 			<input class="barre-recherche" type="text" v-model="texte_recherche" placeholder="Recherche...">
 		</div>
-		<ul class="liste-chansons">
-			<li class="chanson" :class="{ 'chanson-active': chanson === selection }" v-for="chanson of filtrer(chansons)" @click="selectionnerChanson(chanson)">
-				<div class="titre">
-					<p> {{ chanson.titre }}</p>
-				</div>
-				<div class="artiste">
-					<p>{{ chanson.artiste }}</p>
-				</div>
-				<div class="temps">
-					<p>{{ formaterTemps(chanson.temps) }}</p>
-				</div>
-			</li>
-		</ul>
+		<ListeChansonsComponent :chansons="filtrer(chansons)" @selection="selectionnerChanson"/>
+		<audio :src="(source_audio ?? 'chansons/empty.mp3')" autoplay ref="balise_audio" @timeupdate="timeUpdate()" @ended="arreterLecture"></audio>
 		<div v-if="selection_active == true" class="informations">
-			<audio :src="(source_audio ?? 'chansons/empty.mp3')" autoplay ref="balise_audio" @timeupdate="timeUpdate()" @ended="arreterLecture"></audio>
 			<img :src="'chansons/' + selection.image" alt="">
 			<div class="controles">
 				<div class="progression">
@@ -49,6 +37,7 @@
 
 <script setup>
 import { ref, reactive, computed, onMounted } from 'vue';
+import ListeChansonsComponent from './ListeChansons.vue';
 const props = defineProps({
 	// ...
 });
@@ -68,6 +57,7 @@ const volume = ref(25);
 fetch("chansons/chansons.json")
 	.then(resp => resp.json())
 	.then(fichier => {
+		console.log(fichier);
 		chansons.value = fichier;
 	});
 
@@ -94,6 +84,7 @@ function formaterTemps(temps) {
 
 // Sélectionner une chanson
 function selectionnerChanson(chanson) {
+	console.log(chanson);
 	selection_active.value = true;
 	selection.value = chanson;
 	source_audio.value = "chansons/" + selection.value.audio;
@@ -183,49 +174,6 @@ function setVolume() {
 		}
 	}
 
-	.liste-chansons {
-		height: 550px;
-		font-size: 1.5rem;
-		overflow-y: auto;
-		border-top: 2px solid var(--gris-pale);
-		border-bottom: 2px solid var(--gris-pale);
-
-		.chanson {
-			font-size: 1.25rem;
-			display: flex;
-			padding: 1em;
-			border-bottom: 1px solid var(--gris);
-			cursor: pointer;
-			transition: 0.3s ease-in-out;
-
-			&:last-child {
-				border-bottom: none;
-			}
-
-			&:hover {
-				background-color: var(--vert);
-				font-size: 1.5rem;
-			}
-
-			.titre {
-				width: 55%;
-			}
-
-			.artiste {
-				width: 40%;
-			}
-
-			.temps {
-				width: 5%;
-			}
-
-		}
-
-		.chanson-active {
-			background-color: var(--vert-pale);
-			font-size: 1.5rem;
-		}
-	}
 
 	.informations {
 		height: 175px;
